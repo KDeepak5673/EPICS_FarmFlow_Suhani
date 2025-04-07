@@ -11,8 +11,8 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://epics-farm-flow-suhani.vercel.app",
-  "https://epics-farm-flow-suhani-6t687rb7n.vercel.app"
+  "https://epics-farm-flow.vercel.app",
+  "https://epics-farm-flow-suhani-git-main-deepak-kumars-projects-ad4bac99.vercel.app"
 ];
 
 app.use(cors({
