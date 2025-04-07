@@ -8,7 +8,25 @@ const cookieParser = require("cookie-parser");
 const app = express();
 
 // Middleware
-app.use(cors({ origin: "https://epics-farm-flow-suhani-6t687rb7n.vercel.app", methods: ["POST" , "GET"] ,credentials: true }));
+
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://epics-farm-flow-suhani.vercel.app",
+  "https://epics-farm-flow-suhani-6t687rb7n.vercel.app"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+}));
+
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
