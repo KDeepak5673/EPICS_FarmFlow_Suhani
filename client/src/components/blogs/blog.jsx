@@ -129,14 +129,22 @@ const BlogPage = () => {
                         {state.subtitle}
                     </Typography>
 
-                    <Typography
-  variant="body2"
-  paragraph
-  mt={4}
-  fontSize="1rem"
-  lineHeight="1.7"
-  dangerouslySetInnerHTML={{ __html: state.description.replace(/\n/g, '<br />') }}
-/>
+                    <Box mt={4}>
+  {state.description.split('\n').map((line, index) => (
+    <Typography
+      key={index}
+      variant="body2"
+      fontSize="1rem"
+      lineHeight="1.7"
+      style={{
+        whiteSpace: 'pre-wrap', // Keeps indentation and line breaks
+      }}
+    >
+      {line}
+    </Typography>
+  ))}
+</Box>
+
                 </Box>
             </Box>
 
