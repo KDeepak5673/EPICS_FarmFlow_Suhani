@@ -129,9 +129,14 @@ const BlogPage = () => {
                         {state.subtitle}
                     </Typography>
 
-                    <Typography variant="body2" paragraph mt={4} fontSize="1rem" lineHeight="1.7">
-                        {state.description}
-                    </Typography>
+                    <Typography
+  variant="body2"
+  paragraph
+  mt={4}
+  fontSize="1rem"
+  lineHeight="1.7"
+  dangerouslySetInnerHTML={{ __html: state.description.replace(/\n/g, '<br />') }}
+/>
                 </Box>
             </Box>
 
