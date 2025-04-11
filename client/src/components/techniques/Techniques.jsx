@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Typography, Button, TextField, Box, Container, InputAdornment, Paper, Fade } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
+import ChatIcon from "@mui/icons-material/Chat";
+import IconButton from "@mui/material/IconButton";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+
 import TechniqueCard from "./techniqueCard";
 import newRequest from "../../utils/newRequest";
 
@@ -9,6 +13,8 @@ const Techniques = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
+
 
   const handleSearch = async () => {
     try {
@@ -113,7 +119,8 @@ const Techniques = () => {
       </Paper>
       <Box>
         <Button variant="contained" onClick={() => window.location.href = "/post-technique"}
-          sx={{backgroundColor: "#0288d1",color: "white",fontWeight: "bold",borderRadius: "50px",ml: -12,px: 3,py: 1.5,textTransform: "none",boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+          sx={{
+            backgroundColor: "#0288d1", color: "white", fontWeight: "bold", borderRadius: "50px", ml: -12, px: 3, py: 1.5, textTransform: "none", boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
             "&:hover": { backgroundColor: "#01579b" },
             marginRight: 10,
           }}
@@ -175,6 +182,62 @@ const Techniques = () => {
         </>
 
       )}
+
+      <Box
+        onClick={() => setChatOpen(!chatOpen)}
+        sx={{
+          position: "fixed",
+          bottom: 24,
+          right: 24,
+          background: "linear-gradient(to right, #0288d1, #26c6da)",
+          color: "white",
+          zIndex: 1000,
+          px: 3,
+          py: 2,
+          borderRadius: "50px",
+          boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
+          display: "flex",
+          alignItems: "center",
+          gap: 1.5,
+          cursor: "pointer",
+          transition: "all 0.3s ease-in-out",
+          "&:hover": {
+            transform: "scale(1.05)",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+          },
+        }}
+      >
+        <ChatBubbleOutlineIcon sx={{ fontSize: 34 }} />
+        <Typography sx={{ fontWeight: "bold", fontSize: "16px" }}>
+          Need help? Chat with us!
+        </Typography>
+      </Box>
+
+      <Fade in={chatOpen}>
+        <Box
+          sx={{
+            position: "fixed",
+            bottom: 100,
+            right: 24,
+            width: { xs: "90%", sm: 400 },
+            height: 500,
+            bgcolor: "white",
+            borderRadius: 3,
+            overflow: "hidden",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
+            zIndex: 999,
+          }}
+        >
+          <iframe
+            src="https://rainwaterharvestingchatbot.onrender.com/ask" // your Flask chatbot endpoint
+            title="Chatbot"
+            style={{ width: "100%", height: "100%", border: "none" }}
+          />
+        </Box>
+      </Fade>
+
+
+
     </Container>
 
   );
