@@ -164,36 +164,6 @@ const Login = () => {
           </Box>
 
           <Box textAlign="center" mt={3} sx={{ position: "relative" }}>
-            <Typography
-              variant="body2"
-              component={Link}
-              to="/forgot-password"
-              sx={{
-                color: "#36A142",
-                textDecoration: "none",
-                fontWeight: 500,
-                "&:hover": {
-                  textDecoration: "underline"
-                }
-              }}
-            >
-              Forgot password?
-            </Typography>
-
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                mt: 2
-              }}
-            >
-              <Box sx={{ height: "1px", backgroundColor: "#ddd", flex: 1 }} />
-              <Typography variant="body2" sx={{ px: 2, color: "#777" }}>
-                OR
-              </Typography>
-              <Box sx={{ height: "1px", backgroundColor: "#ddd", flex: 1 }} />
-            </Box>
 
             <Typography variant="body2" mt={2} color="text.secondary">
               Don't have an account?{" "}
