@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { Typography, Button, TextField, Box, Container, InputAdornment, Paper, Fade } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
-import ChatIcon from "@mui/icons-material/Chat";
-import IconButton from "@mui/material/IconButton";
+// import ChatIcon from "@mui/icons-material/Chat";
+// import IconButton from "@mui/material/IconButton";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 
 import TechniqueCard from "./techniqueCard";
@@ -12,7 +12,7 @@ import newRequest from "../../utils/newRequest";
 const Techniques = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [showResults, setShowResults] = useState(true);
+  const [showResults, setShowResults] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
 
 
@@ -25,6 +25,10 @@ const Techniques = () => {
       console.error("Error fetching search results:", err);
     }
   };
+
+  useEffect(() => {
+    handleSearch(); // trigger empty search on first load
+  }, []);
 
   return (
     <Container maxWidth="lg" sx={{ py: 6 }}>
