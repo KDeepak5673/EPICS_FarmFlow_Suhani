@@ -12,7 +12,7 @@ import newRequest from "../../utils/newRequest";
 const Techniques = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [showResults, setShowResults] = useState(false);
+  const [showResults, setShowResults] = useState(true);
   const [chatOpen, setChatOpen] = useState(false);
 
 
@@ -117,7 +117,7 @@ const Techniques = () => {
           </Button>
         </Box>
       </Paper>
-      <Box>
+      {/* <Box>
         <Button variant="contained" onClick={() => window.location.href = "/post-technique"}
           sx={{
             backgroundColor: "#0288d1", color: "white", fontWeight: "bold", borderRadius: "50px", ml: -12, px: 3, py: 1.5, textTransform: "none", boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
@@ -127,7 +127,7 @@ const Techniques = () => {
         >
           ADD TECHNIQUE
         </Button>
-      </Box>
+      </Box> */}
 
       {showResults && (
         <>
